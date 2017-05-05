@@ -15,6 +15,7 @@ matrix:
 install: true
 
 script:
+- echo "$PATH"
 - which php
 - ls /usr/bin/php
 - /usr/bin/php -r 'echo "a";'
