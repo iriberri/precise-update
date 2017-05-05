@@ -17,4 +17,4 @@ install: true
 script:
 - which php
 - ls /usr/bin/php
-- echo `/usr/bin/php`
+- /usr/bin/php -r 'echo "a";'
