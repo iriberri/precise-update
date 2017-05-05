@@ -1,1 +1,16 @@
+dist: precise
+sudo: required
 
+language: php
+
+matrix:
+  include:
+  - env: PRECISE=deprecated
+    group: deprecated-2017Q1
+  - env: PRECISE=new
+    group: stable
+    
+install: true
+
+script:
+- /usr/bin/php
