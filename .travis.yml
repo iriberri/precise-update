@@ -16,5 +16,5 @@ install: true
 
 script:
 - which php
-- /usr/bin/php
+- ls /usr/bin/php
 
