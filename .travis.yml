@@ -19,4 +19,5 @@ script:
 - which php
 - ls /usr/bin/php
 - /usr/bin/php -r 'echo "a";'
+- ./scriptt.sh
 - if [[ "$PRECISE" == "new" ]]; then /usr/bin/php; fi
