@@ -7,8 +7,10 @@ matrix:
   include:
   - env: PRECISE=deprecated
     group: deprecated-2017Q1
+    php: 5.5
   - env: PRECISE=new
     group: stable
+    php: 5.5
     
 install: true
 
