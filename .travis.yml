@@ -1,1 +1,17 @@
+dist: precise
+sudo: required
+language: ruby
 
+matrix:
+  include:
+  - group: deprecated-2017Q1
+    env: PRECISE=old
+    rvm: 2.3.1
+  - group: stable
+    env: PRECISE=new
+    rvm: 2.3.1
+
+install:
+- gem install capybara-webkit -v 1.11.1
+
+script: true
