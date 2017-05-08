@@ -1,1 +1,23 @@
+dist: precise
+sudo: required
+language: r
+
+addons:
+  apt:
+    packages:
+    - libsqlite3-dev
+    - libsqlite3-0
+matrix:
+  include:
+  - group: deprecated-2017Q1
+    env: PRECISE=old
+  - group: stable
+    env: PRECISE=new
+
+before_install:
+- sudo apt-add-repository -y ppa:travis-ci/sqlite3
+- sudo apt-get -y update
+- sudo apt-get -y install sqlite3=3.7.15.1-1~travis1
+
+script: true
 
