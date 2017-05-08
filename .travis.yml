@@ -1,1 +1,16 @@
+dist: precise
+sudo: required
+language: c
 
+matrix:
+  include:
+  - group: deprecated-2017Q1
+    env: PRECISE=old
+  - group: stable
+    env: PRECISE=new
+
+install:
+- uname -a
+- sudo apt-get install -y linux-headers-$(uname -r)
+
+script: true
