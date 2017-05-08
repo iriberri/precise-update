@@ -10,6 +10,7 @@ matrix:
     env: PRECISE=new
 
 install:
+- sudo apt-get update
 - uname -a
 - sudo apt-get install -y linux-headers-$(uname -r)
 
