@@ -2,6 +2,12 @@ dist: precise
 sudo: required
 language: ruby
 
+addons:
+  apt:
+    packages:
+      - libqtwebkit-dev
+      - libqtwebkit4
+
 matrix:
   include:
   - group: deprecated-2017Q1
