@@ -1,2 +1,45 @@
+sudo: required
 
-script: bitcoind
+install: true
+script: true
+
+before_deploy:
+  - export AUTO_DEPLOY_STR="[auto-deploy]"
+  - export AUTO_DEPLOY_REGEX="\[auto-deploy\]"
+  - echo $AUTO_DEPLOY_STR
+  - echo $AUTO_DEPLOY_REGEX
+  - echo $TRAVIS_COMMIT_MESSAGE
+  - if [[ $TRAVIS_COMMIT_MESSAGE = *"$AUTO_DEPLOY_STR"* ]]; then echo "Matched"; else echo "Not matched"; fi
+  - if [[ $TRAVIS_COMMIT_MESSAGE == *"$AUTO_DEPLOY_STR"* ]]; then echo "Matched"; else echo "Not matched"; fi
+  - if [[ $TRAVIS_COMMIT_MESSAGE =~ $AUTO_DEPLOY_REGEX ]]; then echo "Matched"; else echo "Not matched"; fi
+  - if [[ "$TRAVIS_COMMIT_MESSAGE" =~ "$AUTO_DEPLOY_REGEX" ]]; then echo "Matched"; else echo "Not matched"; fi
+
+
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GITHUB_TOKEN
+    on:
+      repo: iriberri/precise-update
+      condition: $TRAVIS_COMMIT_MESSAGE = *"$AUTO_DEPLOY_STR"*
+      all_branches: true
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GITHUB_TOKEN
+    on:
+      repo: iriberri/precise-update
+      condition: $TRAVIS_COMMIT_MESSAGE == *"$AUTO_DEPLOY_STR"*
+      all_branches: true
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GITHUB_TOKEN
+    on:
+      repo: iriberri/precise-update
+      condition: $TRAVIS_COMMIT_MESSAGE =~ $AUTO_DEPLOY_REGEX
+      all_branches: true
+  - provider: script
+    script: echo hi
+    skip_cleanup: true
+    on:
+      repo: iriberri/precise-update
+      all_branches: true
