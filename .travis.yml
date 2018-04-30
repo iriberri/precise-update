@@ -43,3 +43,4 @@ deploy:
     on:
       repo: iriberri/precise-update
       all_branches: true
+
